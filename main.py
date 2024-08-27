@@ -1,14 +1,13 @@
+import requests
 
 '''
 常數區塊
 '''
-
 # 目標網址
 BASE_URL = 'https://www.ptt.cc/bbs/'
 
 # 目標頁面
 TARGET_PAGE = '/index'
-
 
 # 目標頁面的頁面的附屬檔名
 HTML_EXT = '.html'
@@ -16,7 +15,6 @@ HTML_EXT = '.html'
 HEADERS = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
 }
-
 
 '''
 執行參數
@@ -29,3 +27,15 @@ target_board = 'Stock'
 
 # 合併完整路徑
 target = BASE_URL + target_board + TARGET_PAGE + page_num + HTML_EXT
+
+
+def download_html(target, headers=HEADERS):
+    #requests.get(target, headers=headers)
+    #return data
+    return requests.get(target, headers=headers)
+
+'''
+Test
+'''
+x = download_html(target)
+print(x.content)
